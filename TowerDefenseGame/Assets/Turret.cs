@@ -17,7 +17,10 @@ public class Turret : MonoBehaviour {
         if (shootTimer > 0) shootTimer -= Time.deltaTime;
         else {
             if (targets.Count > 0) {
-                Destroy(targets[0].gameObject);
+                //Destroy(targets[0].gameObject);
+                var aim = targets[0].position - transform.position;
+                var inst = Instantiate(C.c.prefabs[1], transform.position, Quaternion.identity);
+                inst.GetComponent<Rigidbody2D>().velocity = new Vector2(aim.x, aim.y) * 10f;
                 C.am.PlaySound(0);
                 shootTimer = 1f;
             }
