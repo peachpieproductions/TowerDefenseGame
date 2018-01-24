@@ -60,7 +60,12 @@ public class Enemy : MonoBehaviour {
         hp -= 4;
         hit = .5f;
         spr.color = Color.red;
-        if (hp <= 0) {
+        if (hp <= 0) { //death
+            for(var i = 0; i < Random.Range(0,4); i++) {
+                var inst = Instantiate(C.c.prefabs[4], transform.position, Quaternion.identity);
+                inst.GetComponent<Item>().SetItem(0, Random.Range(0, 4));
+                inst.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+            }
             Destroy(gameObject);
         }
     }

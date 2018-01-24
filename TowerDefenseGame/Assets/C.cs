@@ -12,6 +12,7 @@ public class C : MonoBehaviour {
     public GameObject[] prefabs;
     public static Vector2 mouseWorldPos;
     public TurretInfo[] turrentData;
+    public ItemArray[] itemData;
     public static BensUtil ben;
 
 	// Use this for initialization
