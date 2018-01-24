@@ -42,13 +42,13 @@ public class Player : MonoBehaviour {
 
                 if (Input.GetMouseButtonDown(0)) {
                     buildObject.GetComponent<Turret>().OnPlaced();
-                    C.ben.SetAlpha(buildObject.GetComponent<Turret>().spr, 1);
+                    C.ben.SetColor(buildObject.GetComponent<Turret>().spr,Color.white, 1);
                     buildObject = null;
                 }
 
                 if (Input.GetMouseButtonDown(1)) { //FUCKED UP
                     var mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    RaycastHit2D hit = Physics2D.Raycast(mpos, Vector2.up,.1f);
+                    RaycastHit2D hit = Physics2D.Raycast(mpos, Vector2.zero,.1f);
                     
                     if (hit.collider != null) {
                         Destroy(hit.transform.gameObject);
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
             } else {
                 buildObject = Instantiate(C.c.prefabs[3], transform.position, Quaternion.identity);
                 buildObject.GetComponent<Turret>().UpdateTurret(buildID);
-                C.ben.SetAlpha(buildObject.GetComponent<Turret>().spr, .5f);
+                C.ben.SetColor(buildObject.GetComponent<Turret>().spr,Colors.LimeGreen, .7f);
             }
         }
 

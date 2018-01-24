@@ -42,6 +42,13 @@ public class C : MonoBehaviour {
 
 public class BensUtil : MonoBehaviour {
 
+    public void SetColor(SpriteRenderer spr, Color color, float alpha = 1) {
+        var col = spr.color;
+        col = color;
+        col.a = alpha;
+        spr.color = col;
+    }
+
     public void SetAlpha(SpriteRenderer spr,float alpha) {
         var col = spr.color;
         col.a = alpha;
