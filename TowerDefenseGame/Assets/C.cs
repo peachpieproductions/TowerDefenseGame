@@ -33,6 +33,7 @@ public class C : MonoBehaviour {
     }
 
     public IEnumerator SpawnEnemies() {
+        yield return new WaitForSeconds(0f);
         while (true) {
             var inst = Instantiate(prefabs[0], enemySpawnPoint.position, Quaternion.identity);
             yield return new WaitForSeconds(2f);

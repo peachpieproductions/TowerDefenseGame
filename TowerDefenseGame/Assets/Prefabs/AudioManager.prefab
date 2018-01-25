@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snds:
-  - audioClip: {fileID: 0}
-    vol: 1
+  - audioClip: {fileID: 8300000, guid: 63fdd226143a14849a56391907c62105, type: 3}
+    vol: 0.2
     pitchChange: 1

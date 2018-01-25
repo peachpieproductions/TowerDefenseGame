@@ -45,7 +45,7 @@ public class Turret : MonoBehaviour {
                         var aim = targets[0].position - transform.position;
                         var inst = Instantiate(C.c.prefabs[1], transform.position, Quaternion.identity);
                         inst.GetComponent<Rigidbody2D>().velocity = new Vector2(aim.x, aim.y) * 5f;
-                        C.am.PlaySound(0);
+                        //C.am.PlaySound(0);
                         shootTimer = 1f;
                     }
                 }

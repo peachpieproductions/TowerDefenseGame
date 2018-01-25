@@ -12,8 +12,10 @@ public struct ItemInfo {
     public string itemName;
     public Sprite sprite;
     public ItemType type;
+    internal int index;
     public float imageScale;
     public bool fixedRotation;
+    public AudioClip[] ItemPickupSounds;
 
 }
 
@@ -28,6 +30,7 @@ public class Item : MonoBehaviour {
     internal SpriteRenderer spr;
     internal Rigidbody2D rb;
     internal float pickupDelay = 1f;
+    internal ItemInfo info;
 
 	// Use this for initialization
 	void Awake () {
@@ -46,6 +49,8 @@ public class Item : MonoBehaviour {
         var data = C.c.itemData[type].itemData[index];
         if (data.fixedRotation) rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         spr.sprite = data.sprite;
+        info.index = index;
+        info.type = (ItemType)type;
     }
 
     public IEnumerator PickupDelay() {
@@ -62,6 +67,8 @@ public class Item : MonoBehaviour {
                 var dist = Vector3.Distance(transform.position, t.position);
                 if (dist < 8) {
                     if (dist < 1) {
+                        var sounds = C.c.itemData[(int)info.type].itemData[info.index].ItemPickupSounds;
+                        C.am.PlaySound(0, sounds[Random.Range(0, sounds.Length)]);
                         Destroy(gameObject);
                         yield break;
                     }

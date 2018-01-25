@@ -134,6 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1713b8b72e3554a9c8c4e881d77bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSounds:
+  - {fileID: 8300000, guid: d32800dc15ec34d40a9e381ffd42e6b5, type: 3}
+  - {fileID: 8300000, guid: 059f145e49cab9d4389a4e68497293b8, type: 3}
+  - {fileID: 8300000, guid: eced6c089202f214d88136ca8d6e5a91, type: 3}
 --- !u!212 &212199109528992322
 SpriteRenderer:
   m_ObjectHideFlags: 1

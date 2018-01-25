@@ -22,8 +22,14 @@ public class AudioManager : MonoBehaviour {
 		
 	}
 
-    public void PlaySound(int index) {
+    public void PlaySound(int index, AudioClip overrideClip = null, bool pitchChange = true, float volume = 1) {
         var clip = snds[index].audioClip;
+        if (overrideClip != null) {
+            if (pitchChange) AS.pitch = Random.Range(.8f, 1.2f);
+            else AS.pitch = 0;
+            AS.PlayOneShot(overrideClip, volume);
+            return;
+        }
         if (snds[index].pitchChange) AS.pitch = Random.Range(.8f, 1.2f);
         else AS.pitch = 0;
         AS.PlayOneShot(clip, snds[index].vol);

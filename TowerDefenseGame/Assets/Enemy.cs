@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour {
         if (collision.transform.CompareTag("Bullet")) {
             collision.transform.GetComponent<Bullet>().DestroyBullet();
             EnemyHit(4);
+            rb.velocity *= .1f;
         }
     }
 
@@ -63,7 +64,8 @@ public class Enemy : MonoBehaviour {
         if (hp <= 0) { //death
             for(var i = 0; i < Random.Range(0,4); i++) {
                 var inst = Instantiate(C.c.prefabs[4], transform.position, Quaternion.identity);
-                inst.GetComponent<Item>().SetItem(0, Random.Range(0, 4));
+                var typeInt = Random.Range(0, C.c.itemData.Length);
+                inst.GetComponent<Item>().SetItem(typeInt, Random.Range(0, C.c.itemData[typeInt].itemData.Length));
                 inst.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
             }
             Destroy(gameObject);

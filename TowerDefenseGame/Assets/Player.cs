@@ -100,7 +100,7 @@ public class Player : MonoBehaviour {
         if (rb.velocity.magnitude > 10) rb.velocity = rb.velocity.normalized * 10;
         rb.velocity *= .9f;
 
-        GetComponent<Animator>().SetFloat("direction", rb.velocity.magnitude);
+        GetComponent<Animator>().SetInteger("direction", (int)rb.velocity.magnitude);
 
     }
 }
