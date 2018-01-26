@@ -259,7 +259,7 @@ public class PolyNavAgent : MonoBehaviour{
 		//
 
 		//slow down if wall ahead
-		LookAhead();
+		//LookAhead();
 
 		//move the agent
 		position += velocity * Time.deltaTime;

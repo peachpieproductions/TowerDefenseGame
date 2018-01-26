@@ -44,6 +44,7 @@ public class Player : MonoBehaviour {
                     buildObject.GetComponent<Turret>().OnPlaced();
                     C.ben.SetColor(buildObject.GetComponent<Turret>().spr,Color.white, 1);
                     buildObject = null;
+                    foreach (Enemy e in C.c.enemyList) e.repath = true;
                 }
 
                 if (Input.GetMouseButtonDown(1)) { //FUCKED UP
@@ -71,9 +72,12 @@ public class Player : MonoBehaviour {
                 var flip = 1; if (spr.flipX) flip = -1;
                 foreach(Collider2D coll in Physics2D.OverlapBoxAll((Vector2)transform.position + Vector2.right * flip, new Vector2(2,2),0f)) {
                     if (coll.CompareTag("Enemy")) {
-                        coll.GetComponent<Enemy>().EnemyHit(3f);
-                        coll.GetComponent<Enemy>().fightingPlayer = true;
-                        coll.GetComponent<Enemy>().agent.maxSpeed = 3.5f;
+                        var enemy = coll.GetComponent<Enemy>();
+                        enemy.EnemyHit(3f);
+                        enemy.fightingPlayer = true;
+                        enemy.StopCoroutine(enemy.Navigate());
+                        enemy.StartCoroutine(enemy.Navigate());
+                        enemy.agent.maxSpeed = 3.5f;
                         coll.GetComponent<Rigidbody2D>().velocity += (Vector2)(coll.transform.position - transform.position) * 4;
                     }
                 }

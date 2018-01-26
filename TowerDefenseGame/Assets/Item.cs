@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType {
-    Gold, Food, Novelty, Material, Junk, Weapon, Helm, Armor, Gloves, Boots
+    Gold, Food, Novelty, Material, Consumables, Junk, Weapon, Shield, Helm, Armor, Gloves, Boots
 }
 
 [System.Serializable]
@@ -51,6 +51,7 @@ public class Item : MonoBehaviour {
         spr.sprite = data.sprite;
         info.index = index;
         info.type = (ItemType)type;
+        transform.GetChild(0).localScale = Vector3.one * data.imageScale;
     }
 
     public IEnumerator PickupDelay() {

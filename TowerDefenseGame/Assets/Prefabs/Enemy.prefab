@@ -57,7 +57,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 4
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -129,8 +129,8 @@ MonoBehaviour:
   accelerationRate: 2
   decelerationRate: 2
   lookAheadDistance: 1
-  avoidRadius: 0
-  centerOffset: {x: 0, y: 0}
+  avoidRadius: 0.3
+  centerOffset: {x: 0, y: 0.26}
   rotateTransform: 0
   rotateSpeed: 350
   repath: 1

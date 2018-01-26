@@ -14,6 +14,7 @@ public class C : MonoBehaviour {
     public TurretInfo[] turrentData;
     public ItemArray[] itemData;
     public static BensUtil ben;
+    public List<Enemy> enemyList = new List<Enemy>();
 
 	// Use this for initialization
 	void Start () {
