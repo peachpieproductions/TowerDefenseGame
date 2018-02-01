@@ -32,19 +32,19 @@ public class Enemy : MonoBehaviour {
     IEnumerator SlowUpdate() {
         while (true) {
             //depth
-            var pos = transform.position;
-            pos.z = (pos.y + 100) * .001f;
-            transform.position = pos;
-
-            //rb.velocity *= .95f;
+            C.c.SetDepth(transform);
 
             if (agent.movingDirection.x < 0) spr.flipX = true;
             else spr.flipX = false;
 
             if (fightingPlayer) {
                 if (attackTimer <= 0) {
-                    if (Vector3.Distance(transform.position, C.c.player.position) < 1) {
+                    if (Vector3.Distance(transform.position, C.c.player[0].position) < 1) {
                         anim.SetTrigger("Attack");
+                        attackTimer = .5f;
+                        C.c.playerScript[0].hp -= 2f;
+                        C.c.playerScript[0].hit = .25f;
+                        C.ben.SetColor(C.c.playerScript[0].spr, Color.red);
                     }
                 } else attackTimer -= .25f;
             }
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour {
         while (true) {
             var goal = new Vector2(C.c.enemyGoal.position.x, C.c.enemyGoal.position.y);
             if (fightingPlayer) {
-                goal = new Vector2(C.c.player.position.x, C.c.player.position.y);
+                goal = new Vector2(C.c.player[0].position.x, C.c.player[0].position.y);
                 repath = true;
             }
             if (repath) {

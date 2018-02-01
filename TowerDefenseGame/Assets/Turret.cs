@@ -28,9 +28,7 @@ public class Turret : MonoBehaviour {
 	void Update () {
 
         //depth
-        var pos = transform.position;
-        pos.z = (pos.y + 100) * .001f;
-        transform.position = pos;
+        C.c.SetDepth(transform);
 
         if (!placed) {
             

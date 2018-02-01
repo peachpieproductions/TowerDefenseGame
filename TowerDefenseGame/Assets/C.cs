@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class C : MonoBehaviour {
 
-    public Transform player;
+    public Transform[] player;
+    public Player[] playerScript;
     public static AudioManager am;
     public static C c;
     public Transform enemySpawnPoint;
@@ -26,7 +27,7 @@ public class C : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Camera.main.transform.position = player.position + Vector3.back;
+        Camera.main.transform.position = player[0].position + Vector3.back;
 
         mouseWorldPos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         mouseWorldPos.y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
@@ -39,6 +40,12 @@ public class C : MonoBehaviour {
             var inst = Instantiate(prefabs[0], enemySpawnPoint.position, Quaternion.identity);
             yield return new WaitForSeconds(2f);
         }
+    }
+
+    public void SetDepth(Transform t, float yoffset = 0) {
+        var pos = t.position;
+        pos.z = (pos.y + yoffset + 100) * .001f;
+        t.position = pos;
     }
 
 }

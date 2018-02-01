@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224768977671365532}
   - component: {fileID: 222923931029615596}
   - component: {fileID: 114843009727374640}
+  - component: {fileID: 114988823683089504}
   m_Layer: 5
   m_Name: InvSlot
   m_TagString: Untagged
@@ -149,6 +150,20 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 1
+--- !u!114 &114988823683089504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079210471172574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbb1b4e7156dd24097d2b2ef82cd42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotSprite: {fileID: 114843009727374640}
+  itemSprite: {fileID: 114886676650567184}
+  stackSizeText: {fileID: 114945363338934566}
 --- !u!222 &222146340452411948
 CanvasRenderer:
   m_ObjectHideFlags: 1

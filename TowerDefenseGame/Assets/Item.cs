@@ -13,6 +13,8 @@ public struct ItemInfo {
     public Sprite sprite;
     public ItemType type;
     internal int index;
+    public int rarity;
+    public int cost;
     public float imageScale;
     public bool fixedRotation;
     public AudioClip[] ItemPickupSounds;
@@ -67,7 +69,11 @@ public class Item : MonoBehaviour {
             if (pickupDelay <= 0) {
                 var dist = Vector3.Distance(transform.position, t.position);
                 if (dist < 8) {
-                    if (dist < 1) {
+                    if (dist < 1) { //picked up
+                        var p = t.GetComponent<Player>();
+                        if (p != null) {
+                            p.AddItemToInventory((int)info.type, info.index);
+                        }
                         var sounds = C.c.itemData[(int)info.type].itemData[info.index].ItemPickupSounds;
                         C.am.PlaySound(0, sounds[Random.Range(0, sounds.Length)]);
                         Destroy(gameObject);
