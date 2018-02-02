@@ -161,9 +161,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbb1b4e7156dd24097d2b2ef82cd42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot: 0
   slotSprite: {fileID: 114843009727374640}
+  slotSprites:
+  - {fileID: 21300000, guid: 69174ec5162edec4ba0b0657656f22da, type: 3}
+  - {fileID: 21300000, guid: e96e339f4fa2d2747a5c825afde09f51, type: 3}
   itemSprite: {fileID: 114886676650567184}
   stackSizeText: {fileID: 114945363338934566}
+  type: 0
+  index: 0
+  stackSize: 0
 --- !u!222 &222146340452411948
 CanvasRenderer:
   m_ObjectHideFlags: 1

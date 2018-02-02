@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Content/Pixel Collection - Character/Demo.unity
+    guid: d053214cdc25bf5458e639bdfb7374c1
