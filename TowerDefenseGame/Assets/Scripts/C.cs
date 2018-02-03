@@ -8,6 +8,7 @@ public class C : MonoBehaviour {
     public Transform[] player;
     public Player[] playerScript;
     public static AudioManager am;
+    public static UIManager ui;
     public static C c;
     public Transform enemySpawnPoint;
     public Transform customerSpawnPoint;
@@ -24,8 +25,7 @@ public class C : MonoBehaviour {
     public List<int> npcIdCanSpawnList = new List<int>();
     public float clockTimer;
 
-    [Header("UI")]
-    public Transform[] clockHands;
+    
 
     [Header("Debug Options")]
     public bool debugNoEnemies;
@@ -35,6 +35,7 @@ public class C : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        ui = GameObject.Find("UIManager").GetComponent<UIManager>();
         c = GameObject.Find("C").GetComponent<C>();
         ben = gameObject.AddComponent<BensUtil>();
         var i = 0; foreach(NPCInfo info in npcData) { npcIdCanSpawnList.Add(i); i++; }
@@ -48,9 +49,6 @@ public class C : MonoBehaviour {
         Time.timeScale = debugTimeScale;
 
         clockTimer += Time.deltaTime * 2; if (clockTimer > 60 * 24) clockTimer = 0;
-        clockHands[1].eulerAngles = new Vector3(0, 0, (-clockTimer % 60) * 6);
-        clockHands[0].eulerAngles = new Vector3(0, 0, (-clockTimer / 60) * 30);
-
         Camera.main.transform.position = player[0].position + Vector3.back;
 
         mouseWorldPos.x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;

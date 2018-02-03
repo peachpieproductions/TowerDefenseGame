@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Bullet : MonoBehaviour {
 
     bool destroyed;
+
+    public void SetBullet(int index) {
+        var inst = Instantiate(C.c.turrentData[index].bulletEffect, transform);
+        inst.transform.localPosition = Vector3.zero;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (!destroyed) {

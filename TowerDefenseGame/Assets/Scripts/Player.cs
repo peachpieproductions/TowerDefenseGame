@@ -78,8 +78,8 @@ public class Player : MonoBehaviour {
 
         //Build Mode
         if (Input.GetKeyDown(KeyCode.B)) {
-            if (buildMode > 0) { buildMode = 0; Destroy(buildObject); }
-            else buildMode = 1;
+            if (buildMode > 0) { buildMode = 0; Destroy(buildObject); C.ui.buildPanel[0].SetActive(false); } 
+            else { buildMode = 1; C.ui.buildPanel[0].SetActive(true); }
         }
         if (buildMode > 0) {
             BuildMode();
